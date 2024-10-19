@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "carbon-compound-439104-t6",
+  "private_key_id": "59a2d6ce626538a65f252b781fb2a20758aa3e6d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtSd/iJjGmjnUy\nI0o2+FES3W03p65CY5INpAVb0C01NVHfH6tKhlQLCWR60YOPkdxfwk1996o1MPpe\niNHzrb+SOIdpw85h/Ta5EGPSWxs66hV5FYPkIydePXMXh5+UJv3//kS9l0eVn1aq\nqtmG3iCwWtxO5QcprIkX8ynY6F8EU/UiueL93QO7Pa+rfRteBZ+/4UdCjKPBYSyZ\nz4DX5pYz+BqKnzzeDAMjkFjK/2Btz7B3qZIl/TSoBhoHCleLUfGLVc5tCHra0db4\nskqIA/Lm5bAJd5HF9aNf98Bqz1gDMrtg8vvYd75tSHthE4qgNC//Mo4gkqE8mdy7\nKWmiItuTAgMBAAECggEAA1NOanCenhb4jk532kKRfnYa+odcNtwYJSLQu52OmWD7\nl9XKFrDLR7fjMAgUkZWDcAuGv28fP9NGjareVZ7EFt7pUHEK8qzQbSfz9+rY37Cw\nJFRDcrU/yEmJBM0GIy3uYOaxijiAAED5WT4y4mX5Hgobs7tb/7Knr1/XqyL3SAlX\n8ek+rkJYVLs9VxcFJ0aGHe46X13Jg0YEDKG6zH1BAu6mwUVEh5YQXwoNQmN3cbok\negEyNEVdQcKeStAt4NLPIO6O5zNuNxV4EP/JHoYMwp/SabkWWSffGT+8Cd/tiBIz\nYqnU30/U1FERGSuBA0BOus3akyAWQrV9KdxCXBllDQKBgQDySaCilY0viEjgjG7G\n3noxOQ6DCUKRuRKuheaiJ2wHp56J2oaOWi9pBHgLebe+VzKqSiFWAPd/5Y+02kia\nAfjZTIRg2Dtf2rLX3fsHFDMCksGIsak8G8huQzi0rT7klOqrYIa1914h5MQnOo3o\nslOAWnQyKNWm7UpdFbx6flvaJwKBgQC3GI7NAhihsm4rxcn3kzXZUiU2oM0PWN1q\n2XcdLaysbsDaBTQnX/w3CNDxstvhawx8ob3oszCqimHbmmA58GCZMgKAeDsCTweu\nNvAmBNcL6CO/7G/l+Mn85twxG5M3y5sp8IBsPGUbMYTnMjM7PQV5YnhYerwGrVE6\nXfkE/HoytQKBgHvs/vXKCrICQkxgaBTeHJ/qsCqD5QHGKPENWh8cjNwJd0TJekN7\ni35qo8Ay3LHFxgtl6VElI3LOh0eY0sO7OH5k7dzfHNd1dD6Hsus3ALRTPhxdytMM\n3uLPDUUUy/N8298WezC9uu8ZJN9vyr/33k/rdD1nt4gvHPcptALveKnHAoGAMGv6\nOBV51imOIV1pkGQKNbMXzF6yXICv7fYdHkZaCDAyKHZ/2Hn2Bcf7GjCnHfJllwBf\nbQ8Wq8N1JdKp6Ci+I0Wqi7dAQ9gKu/Qjhqp5BNkbu0IYRcWKBaw4R3R3dqYOHwVP\nsVA3nP13nH0WN3Bn5jY4hY3P9CQZ+0mm9b6fwpECgYBjfdm9TlvYCsNFzr2kFG5N\nnWMEYhpIUUHs0OTxfjAsdSy4VLxpUOPX0CLZKOjcZieR8+TOIuO/t4m+nIVYgvRt\nuFtSoNR9NW4Bol9sSxfWVrC4p7Ro6SamnKZ1VnA9Bdry0G4YQTxqJtEcE1skGD90\n2SZjlKXtC+J3WrcLaSN8lw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "audio-replacer@carbon-compound-439104-t6.iam.gserviceaccount.com",
+  "client_id": "107588424823135122207",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/audio-replacer%40carbon-compound-439104-t6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

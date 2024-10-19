@@ -8,11 +8,11 @@ import os
 import subprocess
 
 # Google Cloud credentials for Speech-to-Text and Text-to-Speech services
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./<your-service-account-file>.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./carbon-compound-439104-t6-59a2d6ce6265.json"
 
 # Azure OpenAI connection details for transcription correction
-azure_openai_key = "<your-azure-openai-key>"  # Replace with your actual key
-azure_openai_endpoint = "<your-azure-openai-endpoint>"  # Replace with your actual endpoint
+azure_openai_key = "22ec84421ec24230a3638d1b51e3a7dc"  # Replace with your actual key
+azure_openai_endpoint = "https://internshala.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-08-01-preview"  # Replace with your actual endpoint
 
 # Streamlit interface for uploading video and inputting parameters
 st.title("AI Video Audio Replacement")
