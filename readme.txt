@@ -1,63 +1,76 @@
 # AI Video Audio Replacement
 
-This application allows you to replace the audio in a video file with AI-generated voice audio. It utilizes Google Cloud services for speech recognition and synthesis, as well as Azure OpenAI for transcription correction.
+This Streamlit-based application allows users to upload a video file with improper audio, transcribe the audio using AI, correct the transcription, and replace the original audio with an AI-generated voice. The application uses:
+
+- **Google Cloud Speech-to-Text** for audio transcription.
+- **Azure OpenAI GPT-4** for transcription correction.
+- **Google Cloud Text-to-Speech** for AI-generated audio replacement.
+- **MoviePy** for video editing and audio replacement.
 
 ## Features
 
-- Upload a video with improper audio.
-- Automatically transcribe the audio using Google Speech-to-Text.
-- Correct the transcription using Azure OpenAI GPT-4.
-- Synthesize speech from the corrected transcription using Google Text-to-Speech.
-- Replace the original audio in the video with the synthesized audio.
+- **Upload Video**: Upload a video with improper or low-quality audio.
+- **Transcribe Audio**: Automatically transcribe the audio using Google Speech-to-Text.
+- **Correct Transcription**: Use Azure OpenAI GPT-4 to correct and improve the transcription for clarity and grammar.
+- **AI Audio Replacement**: Generate a new audio track using Google's Text-to-Speech service.
+- **Replace Audio in Video**: Replace the original video’s audio with the new AI-generated audio.
+- **Customize Speech**: Set the desired speaking rate with words per minute (WPM) input.
 
 ## Prerequisites
 
-To run this application, you need to install the following dependencies and set up your Google Cloud and Azure OpenAI services:
+### Python Libraries
 
-1. **Python 3.7 or later**
-2. **Google Cloud SDK** - Follow the [installation guide](https://cloud.google.com/sdk/docs/install).
-3. **Azure OpenAI Service** - Sign up and create a resource in the [Azure portal](https://portal.azure.com/).
-4. **ffmpeg** - A tool for handling multimedia files like video and audio. Install `ffmpeg` by following the instructions below.
+Install the required Python libraries via pip:
 
-### Installing `ffmpeg`
-
-- On macOS (using Homebrew):
-  ```bash
-  brew install ffmpeg
-
-- On Ubuntu/Debian:
-    ```bash
-    sudo apt update
-    sudo apt install ffmpeg
-
-- On Windows:
-    Download the latest release from the official ffmpeg website and follow the installation instructions. Ensure the ffmpeg binary is added to your system’s PATH.
-    
-## Setup Instructions
-
-1. **Create a virtual environment (optional but recommended):**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-2. **Install required Python packages:**
-    ```bash
-    pip install streamlit moviepy google-cloud-speech google-cloud-texttospeech requests
-
-3. **Set up Google Cloud credentials:**
-    Replace the 'your-service-account-file' values in code with your google cloud's service account JSON key file's path:
-    ```bash
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./<your-service-account-file>.json"
-
-4. **Set up Azure OpenAI connection:**
-    Replace the azure_openai_key and azure_openai_endpoint values in your code with your actual key and endpoint:
-    ```bash
-    azure_openai_key = "<your-azure-openai-key>"
-    azure_openai_endpoint = "<your-azure-openai-endpoint>"
-
-5. **To run the application:**
-    ```bash
-    streamlit run <your-python-file>.py
+```bash
+pip install streamlit moviepy google-cloud-speech google-cloud-texttospeech requests
+```
 
 
+### Additional Tools
+- FFmpeg: Required for audio processing (converting to mono and resampling). Install FFmpeg by following the instructions at FFmpeg Download.
+Cloud Services
 
+### Google Cloud:
+- Enable the Speech-to-Text and Text-to-Speech APIs in your Google Cloud project.
+Create a Google Cloud service account and download the JSON key file.
+
+### Azure OpenAI:
+- Obtain the API key and endpoint for Azure OpenAI GPT-4.
+
+
+## Setup
+
+1. Clone this repository:
+
+```
+    git clone https://github.com/yourusername/AI-Video-Audio-Replacement.git
+    cd AI-Video-Audio-Replacement
+```
+2. Create a .streamlit/secrets.toml file in the project directory and add your Google Cloud and Azure OpenAI credentials:
+
+```
+    [google_cloud]
+    gcp_key = '''{
+        "type": "service_account",
+        "project_id": "your-project-id",
+        "private_key_id": "your-private-key-id",
+        "private_key": "your-private-key",
+        "client_email": "your-client-email",
+        "client_id": "your-client-id",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-client-email"
+    }'''
+
+    [azure_openai]
+    azure_openai_key = "your-azure-openai-key"
+    azure_openai_endpoint = "your-azure-openai-endpoint"
+```
+
+3. Install the dependencies and run the Streamlit app:
+
+``` bash
+    streamlit run audio-replacer.py
+```

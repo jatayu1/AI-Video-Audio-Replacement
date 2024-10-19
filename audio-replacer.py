@@ -4,15 +4,25 @@ from moviepy.audio.AudioClip import CompositeAudioClip
 from google.cloud import speech, texttospeech
 import requests
 import tempfile
+import json
 import os
 import subprocess
 
 # Google Cloud credentials for Speech-to-Text and Text-to-Speech services
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./carbon-compound-439104-t6-59a2d6ce6265.json"
+# Extract the GCP key from Streamlit secrets and save it to a temporary file
+gcp_key = st.secrets["google_cloud"]["gcp_key"]
+
+# Create a temporary file to store the GCP key JSON
+with tempfile.NamedTemporaryFile(delete=False, suffix=".json") as temp_gcp_key_file:
+    temp_gcp_key_file.write(gcp_key.encode())  # Write the key as a string
+    gcp_key_path = temp_gcp_key_file.name
+
+# Set the environment variable to the path of the temporary GCP key file
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gcp_key_path
 
 # Azure OpenAI connection details for transcription correction
-azure_openai_key = "22ec84421ec24230a3638d1b51e3a7dc"  # Replace with your actual key
-azure_openai_endpoint = "https://internshala.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-08-01-preview"  # Replace with your actual endpoint
+azure_openai_key = st.secrets["azure_openai"]["azure_openai_key"]  # Replace with your actual key
+azure_openai_endpoint = st.secrets["azure_openai"]["azure_openai_endpoint"]  # Replace with your actual endpoint
 
 # Streamlit interface for uploading video and inputting parameters
 st.title("AI Video Audio Replacement")
