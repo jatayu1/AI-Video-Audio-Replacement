@@ -1,6 +1,5 @@
 import streamlit as st
 from moviepy.editor import VideoFileClip, AudioFileClip
-from moviepy.audio.AudioClip import CompositeAudioClip
 from google.cloud import speech, texttospeech
 import requests
 import tempfile
@@ -9,7 +8,6 @@ import os
 import subprocess
 
 # Google Cloud credentials for Speech-to-Text and Text-to-Speech services
-# Extract the GCP key from Streamlit secrets and save it to a temporary file
 gcp_key = st.secrets["google_cloud"]["gcp_key"]
 
 # Create a temporary file to store the GCP key JSON
@@ -21,8 +19,8 @@ with tempfile.NamedTemporaryFile(delete=False, suffix=".json") as temp_gcp_key_f
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gcp_key_path
 
 # Azure OpenAI connection details for transcription correction
-azure_openai_key = st.secrets["azure_openai"]["azure_openai_key"]  # Replace with your actual key
-azure_openai_endpoint = st.secrets["azure_openai"]["azure_openai_endpoint"]  # Replace with your actual endpoint
+azure_openai_key = st.secrets["azure_openai"]["azure_openai_key"]
+azure_openai_endpoint = st.secrets["azure_openai"]["azure_openai_endpoint"]
 
 # Streamlit interface for uploading video and inputting parameters
 st.title("AI Video Audio Replacement")
@@ -32,9 +30,20 @@ uploaded_video = st.file_uploader("Upload a Video with improper audio", type=["m
 context_keywords = st.text_input("Enter context keywords (comma-separated):")
 words_per_minute = st.number_input("Enter desired words per minute (WPM):", min_value=50, max_value=300, value=150)
 
+# Function to safely remove files if they already exist
+def remove_if_exists(file_path):
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
 # Process the video when the user clicks the button
 if st.button("Process Video"):
     if uploaded_video:
+        # Remove any existing files before starting the process
+        remove_if_exists("extracted_audio.wav")
+        remove_if_exists("mono_audio.wav")
+        remove_if_exists("synthesized_audio.wav")
+        remove_if_exists("final_video.mp4")
+
         # Function to extract and resample the audio from the video
         def extract_audio(video_clip, output_audio_path, target_sample_rate=16000):
             audio_clip = video_clip.audio
